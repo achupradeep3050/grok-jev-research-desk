@@ -14,7 +14,7 @@ fixed dollar risk.
 [![License: MIT](https://img.shields.io/badge/license-MIT-22C55E)](LICENSE)
 
 [Quick start](#-quick-start) · [How it works](#-how-it-works) · [Risk controls](#-risk-controls) ·
-[Telegram](#-telegram-commands) · [Configuration](#-configuration) · [Limitations](#-limitations)
+[Telegram](#-telegram-commands) · [Configuration](#-configuration) · [Find your edge](#-find-your-edge)
 
 </div>
 
@@ -34,9 +34,9 @@ fixed dollar risk.
 | 🔌 **Pluggable execution** | Local paper ledger by default. An HMAC-signed webhook can hand approved orders to your own executor |
 
 > [!IMPORTANT]
-> This is a **research and decision-support tool**, not a profitable strategy. No edge has been
-> measured or is claimed. Decisions are labelled *SIMULATED*. A human approves every order, and
-> execution is **paper** unless you deliberately wire a webhook. Not financial advice.
+> This is a **research and decision-support framework**. You bring the edge, and the desk helps you find it,
+> test it and tune it (see [Find your edge](#-find-your-edge)). Decisions are labelled *SIMULATED*, a human
+> approves every order, and execution is **paper** unless you deliberately wire a webhook. Not financial advice.
 
 ---
 
@@ -295,10 +295,25 @@ CI runs on Python 3.9 and 3.12. It also runs the installer on a clean Ubuntu run
 
 ---
 
+## 🎯 Find your edge
+
+The desk ships as a framework, not a black box. Every threshold that decides a trade is a setting, so you can
+search for the edge that fits your market, session and timeframe, and tune toward it:
+
+1. **Run it in paper mode first.** Every card and every decision is logged to `data/journal.md`, and every fill
+   is logged to `data/paper_ledger.json`.
+2. **Review the journal.** Find out which assets, sessions, score bands and news-support levels made money, and
+   which ones lost it.
+3. **Tune the knobs.** The main ones are `SIGNAL_MIN_SCORE`, `SIGNAL_MIN_NEWS_SUPPORT`, `AUTO_ASSETS` and
+   `DEAD_ZONE_UTC`. Change stop and target distances per asset in `jevdesk/assets.py`. Try `LLM_IN_LOOP=true`
+   to put Grok on every automatic card.
+4. **Extend the agents.** Add your own feeds, indicators or prompts in `research_desk.py`. You can also re-weight
+   the JEV score in `jev_desk.py`, but keep the risk desk deterministic.
+5. **Compare like with like.** Measure each change against the previous version over the same period, and only
+   wire a webhook once your numbers hold up.
+
 ## ⚠️ Limitations
 
-- **No proven edge.** The scores are a structured way to read evidence. Nobody has validated them against a
-  same-window control. Judge the journal over months before you trust anything.
 - The deterministic fallbacks are simple heuristics: keyword sentiment and EMA structure. Grok is better at
   reading nuance, but it can still be wrong or overconfident.
 - Binance top-trader and taker ratios describe crypto-exchange futures positioning only.
