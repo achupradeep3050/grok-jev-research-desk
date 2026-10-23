@@ -13,8 +13,8 @@ fixed dollar risk.
 ![Execution](https://img.shields.io/badge/execution-paper%20by%20default-F59E0B)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22C55E)](LICENSE)
 
-[Quick start](#-quick-start) · [How it works](#-how-it-works) · [Risk controls](#-risk-controls) ·
-[Telegram](#-telegram-commands) · [Configuration](#-configuration) · [Find your edge](#-find-your-edge)
+[Quick start](#-quick-start) · [How it works](#-how-it-works) · [Risk controls](#%EF%B8%8F-risk-controls) ·
+[Telegram](#-telegram-commands) · [Configuration](#%EF%B8%8F-configuration) · [Find your edge](#-find-your-edge)
 
 </div>
 
