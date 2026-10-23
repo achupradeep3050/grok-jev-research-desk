@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jevdesk"
+version = "1.0.0"
+description = "Grok + JEV multi-agent research desk: macro, news, chart, portfolio-manager and risk-desk agents with a human-in-the-loop Telegram approval hub."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Achu Pradeep" }]
+keywords = ["trading", "llm", "grok", "multi-agent", "telegram", "risk-management", "research"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = ["httpx>=0.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+jevdesk = "jevdesk.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/achupradeep3050/grok-jev-research-desk"
+
+[tool.setuptools.packages.find]
+include = ["jevdesk*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

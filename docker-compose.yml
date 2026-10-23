@@ -1,0 +1,10 @@
+services:
+  desk:
+    build: .
+    image: jevdesk:latest
+    env_file: .env
+    environment:
+      JEVDESK_DATA_DIR: /data
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
